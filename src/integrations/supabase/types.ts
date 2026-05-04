@@ -14,7 +14,90 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      leads: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          source: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          source?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          source?: string | null
+        }
+        Relationships: []
+      }
+      purchases: {
+        Row: {
+          amount_paid: number
+          country: string | null
+          created_at: string
+          currency: string
+          download_count: number
+          download_token: string
+          email: string
+          email_sent: boolean
+          full_name: string | null
+          id: string
+          last_download_at: string | null
+          max_downloads: number
+          payment_method: string | null
+          product_id: string
+          status: string
+          stripe_payment_intent: string | null
+          stripe_session_id: string
+          token_expires_at: string
+        }
+        Insert: {
+          amount_paid: number
+          country?: string | null
+          created_at?: string
+          currency?: string
+          download_count?: number
+          download_token?: string
+          email: string
+          email_sent?: boolean
+          full_name?: string | null
+          id?: string
+          last_download_at?: string | null
+          max_downloads?: number
+          payment_method?: string | null
+          product_id?: string
+          status?: string
+          stripe_payment_intent?: string | null
+          stripe_session_id: string
+          token_expires_at: string
+        }
+        Update: {
+          amount_paid?: number
+          country?: string | null
+          created_at?: string
+          currency?: string
+          download_count?: number
+          download_token?: string
+          email?: string
+          email_sent?: boolean
+          full_name?: string | null
+          id?: string
+          last_download_at?: string | null
+          max_downloads?: number
+          payment_method?: string | null
+          product_id?: string
+          status?: string
+          stripe_payment_intent?: string | null
+          stripe_session_id?: string
+          token_expires_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
