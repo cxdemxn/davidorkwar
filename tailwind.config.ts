@@ -15,7 +15,8 @@ export default {
     extend: {
       fontFamily: {
         serif: ['"Cormorant Garamond"', 'serif'],
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['"Cormorant Garamond"', 'serif'],
+        mono: ['"Spline Sans Mono"', 'ui-monospace', 'monospace'],
       },
       colors: {
         gold: {

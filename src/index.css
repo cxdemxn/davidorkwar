@@ -86,7 +86,9 @@
 
   body {
     @apply bg-background text-foreground antialiased;
+    font-family: "Cormorant Garamond", serif;
     font-feature-settings: "ss01", "liga", "kern";
+    overflow-x: hidden;
   }
 
   ::selection {
@@ -100,7 +102,7 @@
     @apply inline-block h-px w-12 bg-[hsl(var(--gold))] align-middle;
   }
   .eyebrow {
-    @apply font-sans text-[0.7rem] uppercase tracking-[0.32em] text-muted-foreground;
+    @apply font-mono text-[0.7rem] uppercase tracking-[0.32em] text-muted-foreground;
   }
   .display {
     font-family: "Cormorant Garamond", serif;
@@ -119,7 +121,112 @@
   .font-serif-d {
     font-family: "Cormorant Garamond", serif;
   }
-  .font-sans {
-    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  .font-mono {
+    font-family: "Spline Sans Mono", ui-monospace, monospace;
+  }
+}
+
+/* ── The Longest Flight — interactions & reveal ──────────── */
+
+/* Scroll-reveal: visible by default; animates in when observed. */
+[data-reveal] {
+  opacity: 1;
+}
+[data-reveal].tlf-reveal-init {
+  opacity: 0;
+  transform: translateY(28px);
+}
+[data-reveal].tlf-reveal-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Email gate */
+[data-gate] {
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+[data-gate][data-closed="1"] {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Nav link hover */
+.tlf-navlink {
+  color: hsl(var(--muted-foreground));
+  transition: color 0.3s ease;
+}
+.tlf-navlink:hover {
+  color: hsl(var(--foreground));
+}
+.tlf-navbuy {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.tlf-navbuy:hover {
+  background: hsl(var(--gold)) !important;
+  color: hsl(var(--background)) !important;
+}
+
+/* "Buy now" pill turns gold when its row is hovered */
+.tlf-buy-pill {
+  transition: background 0.4s ease;
+}
+.tlf-store-row:hover .tlf-buy-pill {
+  background: hsl(var(--gold));
+}
+
+/* About portrait: grayscale → colour on hover */
+.tlf-portrait {
+  filter: grayscale(100%);
+  transition: filter 1s ease;
+}
+.tlf-portrait:hover {
+  filter: grayscale(0%);
+}
+
+/* Gallery image zoom */
+.tlf-gallery-img {
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.tlf-gallery-img:hover {
+  transform: scale(1.04);
+}
+
+/* Email / contact links */
+.tlf-email-link {
+  transition: color 0.3s ease;
+}
+.tlf-email-link:hover {
+  color: hsl(var(--gold));
+}
+
+/* Field focus accents */
+.tlf-field:focus {
+  border-color: hsl(var(--gold)) !important;
+}
+
+/* Primary buttons */
+.tlf-btn {
+  transition: background 0.4s ease;
+}
+.tlf-btn:hover {
+  background: hsl(var(--gold)) !important;
+}
+
+/* Responsive nav: desktop links vs. menu button */
+.tlf-nav-desktop {
+  display: flex;
+}
+.tlf-nav-menubtn {
+  display: none;
+}
+@media (max-width: 860px) {
+  .tlf-nav-desktop {
+    display: none;
+  }
+  .tlf-nav-menubtn {
+    display: block;
   }
 }
